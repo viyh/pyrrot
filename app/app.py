@@ -20,6 +20,7 @@ import sys
 API_PREFIX = "/api/v1"
 
 app = Flask(__name__)
+
 handler = logging.StreamHandler(sys.stdout)
 handler.setFormatter(
     logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
@@ -34,17 +35,18 @@ app.logger.addHandler(handler)
 def send_index():
     return render_template(
         "index.html",
-        api_prefix=f"{request.url_root.rstrip('/')}{API_PREFIX}/parrots/",
-        url_prefix=request.url_root,
+        api_prefix=f"{API_PREFIX}/parrots/",
+        url_prefix=request.path,
     )
 
 
 @app.route("/pyrrot.js")
 def send_js():
-    return render_template(
+    js = render_template(
         "pyrrot.js",
-        api_prefix=f"{request.url_root.rstrip('/')}{API_PREFIX}/parrots",
+        api_prefix=f"{API_PREFIX}/parrots",
     )
+    return js, 200, {"Content-Type": "application/javascript; charset=utf-8"}
 
 
 @app.route("/<path:filename>")
