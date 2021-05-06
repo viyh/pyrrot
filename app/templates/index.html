@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href='{{url_prefix}}images/pyrrot.gif' type="image/gif" />
+    <link rel="icon" href='{{url_prefix}}images/pyrrot.gif' type="image/gif" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.rawgit.com/jmhobbs/cultofthepartyparrot.com/master/src/parrot.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_prefix }}style.css">
+    <script src="{{ url_prefix }}pyrrot.js"></script>
+</head>
+<title>
+    Party Parrot as a Service
+</title>
+
+<body>
+    <header>
+        <table>
+            <tr>
+                <td><img src="{{ url_prefix }}images/pyrrot.gif"></td>
+                <td><h1>Party Pyrrot</h1></td>
+                <td><img src="{{ url_prefix }}images/pyrrot.gif"></td>
+            </tr>
+        </table>
+    </header>
+    <main>
+    <div class="main">
+        <div id="menu" class="column">
+            <table id="menu">
+                <tr>
+                    <td class="settingdesc">Overlay Image URL</td>
+                    <td class="setting" colspan="2">
+                        <input type="text" id="overlay" size="50" placeholder="Type an image URL here" onchange="getImageSize(this.value)" />
+                        <p id="error" style="color:#ff0000"></p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="settingdesc">Choose a parrot</td>
+                    <td class="setting" id="parrotchoiceblock" colspan="2">
+                        <div id="left" class="parrotchoice">
+                            <p>Left</p>
+                            <img src="{{ url_prefix }}images/left.gif">
+                        </div>
+                        <div class="parrotchoice">
+                            <p>Right</p>
+                            <img src="{{ url_prefix }}images/right.gif">
+                        </div>
+                        <div class="parrotchoice">
+                            <p>Middle</p>
+                            <img src="{{ url_prefix }}images/middle.gif">
+                        </div>
+                        <div class="parrotchoice">
+                            <p>Conga</p>
+                            <img src="{{ url_prefix }}images/conga.gif">
+                        </div>
+                        <div class="parrotchoice">
+                            <p>Bored</p>
+                            <img src="{{ url_prefix }}images/bored.gif">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="settingdesc">Parrot speed</td>
+                    <td class="setting settingrange">
+                        <input type="range" min="20" max="200" value="50" class="slider" id="range_speed"
+                            oninput="show_speed(this.value)" onchange="parrotify()" />
+                    </td>
+                    <td class="settingvalue">
+                        <span id="speed">50</span>
+                        <span>ms per frame</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="settingdesc">Overlay image size</td>
+                    <td class="setting settingrange">
+                        <input type="range" min="0" max="200" value="100" id="range_size"
+                            oninput="show_size_percent(this.value)" onchange="change_size_percent(this.value)" />
+                    </td>
+                    <td class="settingvalue">
+                        <span id="size_percent">100</span>
+                        <span>%</span>
+                    </td>
+                </tr>
+                    <td class="settingdesc">Overlay x-offset</td>
+                    <td class="setting settingrange">
+                        <input type="range" min="-320" max="320" value="0" id="range_offset_x"
+                            oninput="show_offset_x(this.value)" onchange="parrotify()" />
+                    </td>
+                    <td class="settingvalue">
+                        <span id="offset_x">0</span>
+                        <span>pixels</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="settingdesc">Overlay y-offset</td>
+                    <td class="setting settingrange">
+                        <input type="range" min="-320" max="320" value="0" id="range_offset_y"
+                            oninput="show_offset_y(this.value)" onchange="parrotify()" />
+                    </td>
+                    <td class="settingvalue">
+                        <span id="offset_y">0</span>
+                        <span>pixels</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="preview" class="column">
+            <table id="buttons">
+                <tr>
+                    <td id="previewimage" colspan="2"><div><img src="{{url_prefix}}images/left.gif" id="parrotImage" class="parrotpreview"></div></td>
+                </tr>
+                <tr>
+                    <td id="copy-button">
+                        <input type="hidden" id="parrotImageURL" value="{{url_prefix}}images/left.gif" />
+                        <a class="button-small" onclick="copyImageURL()">Copy Image URL</a><br />
+                    </td>
+                    <td id="download-button">
+                        <a class="button-small" onclick="downloadImage()">Download Image</a><br />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span id="copy-tooltip">URL copied!</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </main>
+    <footer>
+        <hr />
+        <a class="button-small" href="http://cultofthepartyparrot.com/">Cult of the Party Parrot</a>
+        <a class="button-small" href="https://github.com/viyh/partypyrrot">Party Pyrrot on Github</a>
+        <a class="button-small" href="https://github.com/parrotify/parrotify.github.io">Inspired by PPaaS</a>
+        <hr />
+    </footer>
+</body>
+
+</html>
