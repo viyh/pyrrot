@@ -7,69 +7,6 @@ from flask import current_app as app
 from urllib.parse import urlparse
 
 
-PARROTS = {
-    "bored": {"moves": [(45, 108)] * 10},
-    "conga": {
-        "moves": [
-            (144, 99),
-            [(162, 90), (-108, 90)],
-            [(144, 90), (-126, 90)],
-            [(135, 99), (-135, 99)],
-            [(162, 108), (-108, 108)],
-            [(153, 126), (-117, 126)],
-            [(198, 144), (-72, 126)],
-            [(288, 126), (0, 126)],
-            [(324, 135), (54, 135)],
-            (108, 108),
-        ]
-    },
-    "left": {
-        "moves": [
-            (144, 99),
-            (108, 90),
-            (81, 90),
-            (36, 99),
-            (36, 108),
-            (54, 126),
-            (90, 144),
-            (135, 126),
-            (153, 117),
-            (162, 108),
-        ]
-    },
-    "middle": {
-        "moves": [
-            (81, 90),
-            (36, 99),
-            (36, 108),
-            (54, 126),
-            (90, 144),
-            (207, 126, True, False),
-            (243, 108, True, False),
-            (261, 99, True, False),
-            (252, 90, True, False),
-            (234, 81, True, False),
-            (198, 81, True, False),
-            (117, 63),
-        ]
-    },
-    "right": {
-        "moves": [
-            (85, 99),
-            (121, 90),
-            (148, 90),
-            (193, 99),
-            (193, 108),
-            (175, 126),
-            (139, 144),
-            (94, 126),
-            (76, 117),
-            (67, 108),
-        ]
-    },
-}
-
-
 class Parrot:
     def __init__(
         self,
@@ -140,14 +77,6 @@ class Parrot:
             if isinstance(self.moves[frame], tuple):
                 self.moves[frame] = [self.moves[frame]]
             for moves in self.moves[frame]:
-                # if 2 < len(moves) and moves[2]:
-                #     processed_overlay = processed_overlay.transpose(
-                #         Image.FLIP_LEFT_RIGHT
-                #     )
-                # if 3 < len(moves) and moves[3]:
-                #     processed_overlay = processed_overlay.transpose(
-                #         Image.FLIP_TOP_BOTTOM
-                #     )
                 offset = (
                     x1 + moves[0] + int(self.offset_x),
                     y1 + moves[1] + int(self.offset_y),
@@ -192,3 +121,66 @@ class Parrot:
         if r.headers["content-type"] in image_formats:
             return True
         return False
+
+
+PARROTS = {
+    "bored": {"moves": [(45, 108)] * 10},
+    "conga": {
+        "moves": [
+            (144, 99),
+            [(162, 90), (-108, 90)],
+            [(144, 90), (-126, 90)],
+            [(135, 99), (-135, 99)],
+            [(162, 108), (-108, 108)],
+            [(153, 126), (-117, 126)],
+            [(198, 144), (-72, 126)],
+            [(288, 126), (0, 126)],
+            [(324, 135), (54, 135)],
+            (108, 108),
+        ]
+    },
+    "left": {
+        "moves": [
+            (144, 99),
+            (108, 90),
+            (81, 90),
+            (36, 99),
+            (36, 108),
+            (54, 126),
+            (90, 144),
+            (135, 126),
+            (153, 117),
+            (162, 108),
+        ]
+    },
+    "middle": {
+        "moves": [
+            (81, 90),
+            (36, 99),
+            (36, 108),
+            (54, 126),
+            (90, 144),
+            (207, 126, True, False),
+            (243, 108, True, False),
+            (261, 99, True, False),
+            (252, 90, True, False),
+            (234, 81, True, False),
+            (198, 81, True, False),
+            (117, 63),
+        ]
+    },
+    "right": {
+        "moves": [
+            (85, 99),
+            (121, 90),
+            (148, 90),
+            (193, 99),
+            (193, 108),
+            (175, 126),
+            (139, 144),
+            (94, 126),
+            (76, 117),
+            (67, 108),
+        ]
+    },
+}
