@@ -30,7 +30,7 @@ The API is accessible at `/api/v1`.
 
 ### Examples
 
-* http://localhost:5000/api/v1/parrots/left?overlay=https://i.imgur.com/p0OPxQI.png&size=0.7&offset_x=-141&offset_y=-121&speed=58
+* http://localhost:5000/api/v1/parrots/left?overlay=https://i.imgur.com/wn6X1o4.png&size=1&offset_x=-104&offset_y=-156&speed=50
 * http://localhost:5000/api/v1/parrots/left?speed=20&resize=128x128
 
 
