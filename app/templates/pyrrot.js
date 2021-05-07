@@ -14,15 +14,19 @@ function parrotify() {
     document.getElementById("parrotImageURL").value = newImprovedParrot;
 }
 
-function showErrorMessage(){
-    document.getElementById("error").innerHTML = "Please enter a valid image URL";
+function showErrorMessage(error){
+    document.getElementById("error").innerHTML = error;
     document.getElementById("parrotImage").src = basicParrotImage;
 }
 
 function getImageSize(url) {
+    if(url.length > 300){
+        showErrorMessage("Please enter a shorter image URL");
+        return;
+    }
     let image = new Image();
     image.onerror = function () {
-        showErrorMessage();
+        showErrorMessage("Please enter a valid image URL");
     }
     image.onload = function () {
         imageHeightOriginal = this.height;
