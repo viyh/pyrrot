@@ -109,7 +109,7 @@ window.addEventListener('load', function () {
 
 function copyImageURL() {
     const elem = document.createElement('textarea');
-    elem.value = document.getElementById("parrotImage").getAttribute("src");
+    elem.value = window.location.origin + '/' + document.getElementById("parrotImage").getAttribute("src");
     document.body.appendChild(elem);
     elem.select();
     elem.setSelectionRange(0, 99999); /* For mobile devices */
@@ -122,7 +122,7 @@ function copyImageURL() {
 }
 
 function downloadImage() {
-    const url = document.getElementById("parrotImage").getAttribute("src");
+    const url = window.location.origin + '/' + document.getElementById("parrotImage").getAttribute("src");
     const a = document.createElement('a');
     a.href = url;
     a.download = url.split('api/v1/parrots/').pop().split('?')[0];
