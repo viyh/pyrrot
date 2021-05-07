@@ -1,6 +1,9 @@
 # Party Pyrrot
 Simple Party Parrot generator API and UI.
 
+* [Party Pyrrot on GitHub](https://github.com/viyh/pyrrot)
+* [Party Pyrrot on DockerHub](https://hub.docker.com/repository/docker/viyh/pyrrot)
+
 ## Installation
 * Build the docker container:
 
@@ -19,8 +22,8 @@ Simple Party Parrot generator API and UI.
 
 The API is accessible at `/api/v1`.
 
-* `/parrots` [GET] - List the available parrots
-* `/parrots/<parrot>` [GET, POST] - Return default parrot image
+* `/parrots` [`GET`] - List the available parrots
+* `/parrots/<parrot>` [`GET`, `POST`] - Return default parrot image
     - `overlay` - The URL for the overlay image. Default: None
     - `speed` - The speed of parroting expressed in milliseconds per frame between 20 and 1000. Default: 50 ms per frame
     - `size` - The size of the overlay image expressed as an float between 0.1 and 2.0. Default: 1.0
